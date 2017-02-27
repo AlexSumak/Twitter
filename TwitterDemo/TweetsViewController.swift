@@ -12,7 +12,7 @@ class TweetsViewController: UIViewController {
 
     
     var tweets: [Tweet]!
-    var count = 40
+    var count = 10
     @IBOutlet weak var tableView: UITableView!
     
 
@@ -25,7 +25,7 @@ class TweetsViewController: UIViewController {
        
         super.viewDidLoad()
         
-        
+   
         TwitterClient.sharedInstance?.homeTimeLine(count: count, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
@@ -37,7 +37,7 @@ class TweetsViewController: UIViewController {
         }, failure: { (error: Error) -> () in
             print(error.localizedDescription)
         })
-        
+
         // Do any additional setup after loading the view.
     }
 
