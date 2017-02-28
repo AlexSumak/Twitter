@@ -26,19 +26,24 @@ class TweetsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         TwitterClient.sharedInstance?.homeTimeLine(count: count, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
-            /*
-             for tweet in tweets {
-             print(tweet.text)
-             }
-             */
+          
+          
+         
         }, failure: { (error: Error) -> () in
             print(error.localizedDescription)
         })
     }
 
+    
+    
     @IBAction func retweet(_ sender: Any) {
         let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to: self.tableView)
         let indexPath = tableView.indexPathForRow(at: buttonPosition)
@@ -188,7 +193,7 @@ extension TweetsViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as! TweetCell
         let tweet = tweets[indexPath.row]
         if let imageUrlString = tweet.profileImageUrlString {
-            let imageUrl = URL(string: imageUrlString)
+        let imageUrl = URL(string: imageUrlString)
             cell.profileImageView.setImageWith(imageUrl!)
         }
         
