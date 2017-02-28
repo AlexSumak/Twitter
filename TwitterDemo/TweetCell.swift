@@ -18,6 +18,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var repostLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
  
 
     override func awakeFromNib() {
@@ -34,14 +36,3 @@ class TweetCell: UITableViewCell {
 }
 
 
-/*
- 
- 
- @IBOutlet weak var favoriteLabel: UILabel!
- @IBOutlet weak var profileImageView: UIImageView!
- @IBOutlet weak var retweetLabel: UILabel!
- @IBOutlet weak var timestampLabel: UILabel!
- @IBOutlet weak var tweetTextLabel: UILabel!
- @IBOutlet weak var usernameLabel: UILabel!
- 
- */

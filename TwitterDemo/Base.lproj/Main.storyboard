@@ -114,6 +114,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-SG-Nsl">
+                                                    <rect key="frame" x="106" y="76" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="R"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4w-Pt-wSA">
+                                                    <rect key="frame" x="173" y="77" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="T"/>
+                                                    <connections>
+                                                        <action selector="retweet:" destination="P2H-Hm-cx5" eventType="touchUpInside" id="wxg-8P-aso"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXG-mt-3r3">
+                                                    <rect key="frame" x="251" y="76" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="L"/>
+                                                    <connections>
+                                                        <action selector="like:" destination="P2H-Hm-cx5" eventType="touchUpInside" id="sI1-N6-piY"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="tintColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
@@ -121,6 +142,7 @@
                                             <outlet property="handleLabel" destination="kW3-Zu-5rn" id="1QG-9E-Uzm"/>
                                             <outlet property="likeLabel" destination="Mmj-q9-9yd" id="jtB-SS-fcx"/>
                                             <outlet property="nameLabel" destination="0ta-SZ-e1h" id="GsK-10-1gq"/>
+                                            <outlet property="profileImageView" destination="eH8-O6-UMU" id="p3J-vJ-WGM"/>
                                             <outlet property="profilePicImageView" destination="eH8-O6-UMU" id="6NG-If-l2l"/>
                                             <outlet property="repostLabel" destination="Tdk-jM-NtO" id="Qqh-eu-9tw"/>
                                             <outlet property="timeLabel" destination="aaX-Sv-vvQ" id="iAN-s6-jm4"/>
@@ -139,6 +161,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="4uX-aV-C09" id="Gp4-HO-c1X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MS8-iM-rl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
