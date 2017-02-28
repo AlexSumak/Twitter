@@ -20,11 +20,17 @@ class Tweet: NSObject {
      var current_user_retweet: Tweet?
      var favorited: Bool?
      var profileImageUrlString: String?
+     var tweetDict: NSDictionary!
+    var user: User{
+        return User(dictionary: self.tweetDict["user"] as! NSDictionary)
+    }
+    
     
     init(dictionary: NSDictionary){
-        
+        self.tweetDict = dictionary
         text = dictionary["text"] as? String
-        userName = dictionary["user"] as? String
+        //initialize a variable that obtains user dictioanry
+        //userName = userdict["name"] as? String
         id_str = dictionary["id_str"] as? String
         
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
