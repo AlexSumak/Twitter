@@ -184,7 +184,8 @@ extension TweetsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as! TweetCell
         let tweet = tweets[indexPath.row]
         if let imageUrlString = tweet.profileImageUrlString {
             let imageUrl = URL(string: imageUrlString)
