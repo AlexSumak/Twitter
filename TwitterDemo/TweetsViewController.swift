@@ -202,6 +202,7 @@ extension TweetsViewController: UITableViewDataSource, UITableViewDelegate{
         cell.timeLabel.text = timeAgoSince(tweet.timestamp!)
         cell.tweetTextLabel.text = tweet.text
         cell.nameLabel.text = tweet.userName
+        cell.handleLabel.text = tweet.id_str
         return cell
     }
 
