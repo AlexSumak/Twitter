@@ -11,6 +11,11 @@ import UIKit
 class TweetCell: UITableViewCell {
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
+    
+    var retweetMe: Int = 1
+    var favoriteMe: Int = 1
+    
+    
     @IBOutlet weak var profilePicImageView:
     UIImageView!
  
@@ -21,7 +26,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var repostLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    //@IBOutlet weak var profileImageView: UIImageView!
  
     var tweet: Tweet!{
         didSet{
@@ -33,12 +38,13 @@ class TweetCell: UITableViewCell {
             if let name = self.tweet.user.name{
                 self.nameLabel.text = name
             }
+            
             //update the rest of the UI
             self.likeLabel.text = tweet.favoriteCount.description
             self.repostLabel.text = tweet.retweetCount.description
             self.timeLabel.text = timeAgoSince(tweet.timestamp!)
             self.tweetTextLabel.text = tweet.text
-           // self.handleLabel.text = tweet.user.screenname
+         
             
         }
     }
@@ -118,16 +124,25 @@ class TweetCell: UITableViewCell {
     
     
     @IBAction func onRetweet(_ sender: Any) {
-      
+        favoritesCount = tweet.favoriteCount
         favoritesCount = favoritesCount + 1
-        
-        
         likeLabel.text = String (self.favoritesCount)
+        retweetMe = retweetMe + 1
+        if (retweetMe % 2 != 0){
+            favoritesCount = favoritesCount - 1
+            likeLabel.text = String (self.favoritesCount)
+        }
     }
   
     @IBAction func onLike(_ sender: Any) {
+        retweetCount = tweet.retweetCount
         retweetCount = retweetCount + 1
         repostLabel.text = String (self.retweetCount)
+        favoriteMe = favoriteMe + 1
+        if (favoriteMe % 2 != 0){
+            retweetCount = retweetCount - 1
+            repostLabel.text = String (self.retweetCount)
+        }
     }
 
 }

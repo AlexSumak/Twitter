@@ -103,7 +103,7 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     
     func unretweet(tweet: Tweet, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
-        // step 1
+      
         if !tweet.retweeted! {
         } else {
             var original_tweet_id: String?
@@ -113,12 +113,12 @@ class TwitterClient: BDBOAuth1SessionManager {
             } else {
                 original_tweet_id = tweet.retweeted_status?.id_str
             }
-            // step 2
+        
             get("1.1/statuses/show.json", parameters: ["id": original_tweet_id!, "include_my_retweet": true], progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let dictionary = response as? NSDictionary
                 let full_tweet = Tweet(dictionary: dictionary!)
                 if let retweet_id = full_tweet.current_user_retweet?.id_str {
-                    // step 3
+                  
                     self.post("1.1/statuses/unretweet/" + retweet_id + ".json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                         let dictionary = response as? NSDictionary
                         let orig_tweet = Tweet(dictionary: dictionary!)

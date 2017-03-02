@@ -28,6 +28,9 @@ class TweetsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         TwitterClient.sharedInstance?.homeTimeLine(count: count, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
@@ -43,6 +46,30 @@ class TweetsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+ 
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+
+        let indexpath = tableView.indexPath(for: cell)
+        let tweet = tweets[(indexpath?.row)!]
+        
+        let profileViewController = segue.destination as! ProfileViewController
+        
+        profileViewController.tweets = tweet  as [Tweet]! 
+        
+        
+        
+        
+        
+        
+        
+        print("atatatatatattatatatattatat")
+     }
  
 }
 
